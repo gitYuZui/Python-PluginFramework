@@ -47,10 +47,10 @@
      #! /usr/bin/python3
      # -*- coding:utf-8 -*-
 
-     from TestPlugin.pluginmanager import pluginManager                #导入框架主类文件
-     from TestPlugin.pluginmanager import pluginError                  #导入框架异常类文件
-     
-     MyPlugin = pluginManager()                                        #实例化框架主文件
+     from TestPlugin.pluginmanager import pluginManager                #框架模块
+     from TestPlugin.pluginmanager import pluginError                  #框架异常处理模块
+
+     MyPlugin = pluginManager()                                        #实例化框架模块
      successPath,failPath =  MyPlugin.addPathPlugin("TestPlugin")      #执行加载模块目录，返回 [成功目录,失败目录及原因]
      print("加载成功模块目录： " +  str(successPath) )
      print("加载失败模块目录： " +  failPath.dir + "失败原因：" +  failPath.content)
@@ -74,7 +74,7 @@
      if __name__ != "__main__":
          print("我test被加载了")
      ```
-  * 通过代码加载模块：
+ * 通过代码加载模块：
   
       * 实例化对象，并定义模块名称与对象放到 dict 类型里
       
@@ -86,6 +86,36 @@
         * cordPlugin.py
         
         * pluginmanager.py
+      ###### main 代码：
+      ```python
+      #! /usr/bin/python3
+      # -*- coding:utf-8 -*-
+      from Plugin.pluginmanager import pluginManager 
+      from Plugin.pluginmanager import pluginError 
+      import cordPlugin
+      
+      if __name__ == "__main__":
+         MyPlugin = pluginManager()
+         cordPlugin1 = cordPlugin.staticPlugin('我是模块1')                     #实例化第一个模块
+         cordPlugin2 = cordPlugin.staticPlugin('我是模块2')                     #实例化第二个模块
+         
+         MyPlugin.addPlugin( **{"cord1":cordPlugin1,"cord2":cordPlugin2 } ) #将模块的实例化加载到框架里
+         try:
+            MyPlugin.cord1.test()                                          #调用模块里的方法
+            MyPlugin.cord2.test()
+         except pluginError as Error:                                      #没有此模块
+             print(Error)
+         except AttributeError as Error:                                   #此模块里没有所调用的方法
+             print(str(Error))
     
+      ```
+      ###### cordPlugin 代码：
+      ```python
+      class staticPlugin:
+          def __init__(self,name):
+              self.name = name
 
-
+          def test(self):
+              print("我是用代码导入的模块 %s" % self.name)
+      
+      ```
