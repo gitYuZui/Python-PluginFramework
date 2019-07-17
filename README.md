@@ -81,7 +81,7 @@ python3+
   
       * 实例化对象，并定义模块名称与对象放到 dict 类型里
       
-      * 例如： cordPlugin.py
+      * 例如： cordPlugin 模块
       ###### 目录结构：
      * Project
         * main.py
@@ -114,7 +114,7 @@ python3+
       ```
       ###### cordPlugin 代码：
       ```python
-      class staticPlugin:
+      class cordPlugin:
           def __init__(self,name):
               self.name = name
 
@@ -127,5 +127,5 @@ python3+
       
 ### 结束语
 
-欢迎大佬们，技术交流 QQ：1170941265
+欢迎大佬们来技术交流 QQ：1170941265
 
