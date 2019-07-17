@@ -30,8 +30,8 @@ python3+
  addPathPlugin  | string | [successPath,fail]  | 载入所在目录模块
  addPlugin  | dict | Null  | 载入实例化对象
  getAllPlugin  | Null | dict  | 获取模块dict集合
- delPlugin  | string | dict  | 删除指定模块
- hasPlugin  | string | dict  | 查看模块是否存在
+ delPlugin  | string | bool  | 删除指定模块
+ hasPlugin  | string | bool  | 查看模块是否存在
 
 ### 使用方法：
  * 动态加载目录方式： 
