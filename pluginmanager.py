@@ -1,25 +1,4 @@
-#-!- coding:utf-8 -!-
 
-#目录格式
-r'''
-
-++Project
-    -main.py
-    ++Plugin
-        -pluginmanager.py
-        ++plugin1
-            -main.py
-            -explain.txt
-            ++Resources
-                -subsidiary.py
-                -userInfo.cfg
-        ++plugin2
-            -main.py
-            -explain.txt
-            ++Resources
-        ++...
-
-'''
 import os,sys
 
 #插件化(静态 + 动态)
